@@ -53,7 +53,7 @@ export default NextAuth({
             activeSubscription: null
           }
         }
-      
+
     },
     async signIn({ user, account, profile }){
       const email = user.email;
@@ -70,7 +70,7 @@ export default NextAuth({
               )
             ),
             q.Create(
-              q.Collection('users'), 
+              q.Collection('users'),
               { data: { email } }
             ),
             q.Get(
@@ -81,12 +81,13 @@ export default NextAuth({
             )
           )
         );
-                
+
         console.log(x)
         return true;
       } catch {
       return false
       }
     }
-  }
+  },
+  secret: process.env.NEXTAUTH_URL
 });
